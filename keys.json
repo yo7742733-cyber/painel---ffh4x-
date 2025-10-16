@@ -1,0 +1,14 @@
+{
+  "keys": {
+    "TESTE": {
+      "username": "TESTE",
+      "status": "active",
+      "expiryDate": "2025-11-15T20:33:17.552Z"
+    },
+    "1": {
+      "username": "1",
+      "status": "active",
+      "expiryDate": "2025-11-15T20:42:30.374Z"
+    }
+  }
+}
