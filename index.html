@@ -1,0 +1,643 @@
+!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>paineladminffh4x</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .login-box h1 {
+            color: #667eea;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .login-box p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .creator-badge {
+            margin-top: 30px;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            color: white;
+        }
+
+        .creator-badge p {
+            margin: 0;
+            font-size: 12px;
+            opacity: 0.9;
+            color: white;
+        }
+
+        .creator-badge h3 {
+            font-size: 20px;
+            margin-top: 5px;
+            color: white;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            display: none;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        .stat-card.blue {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .stat-card.green {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .stat-card h3 {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .form-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-delete {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 12px;
+        }
+
+        .user-list {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .user-list h2 {
+            background: #f8f9fa;
+            padding: 20px;
+            color: #667eea;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .user-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .user-info h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .user-info p {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .user-status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-inactive {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .api-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .api-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .api-url {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+            font-family: monospace;
+            font-size: 14px;
+            word-break: break-all;
+            color: #333;
+        }
+
+        .copy-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginScreen" class="login-container">
+        <div class="login-box">
+            <div class="login-icon">🔐</div>
+            <h1>FFH4X Admin Panel</h1>
+            <p>Digite a chave de acesso para continuar</p>
+            
+            <div id="errorMessage" class="error-message">
+                ❌ Key inválida! Tente novamente.
+            </div>
+
+            <div class="input-group">
+                <label>Chave de Acesso</label>
+                <input type="text" id="keyInput" placeholder="Digite a chave">
+            </div>
+
+            <button class="login-btn" id="loginButton">🚀 Entrar no Painel</button>
+
+            <div class="creator-badge">
+                <p>DESENVOLVIDO POR</p>
+                <h3>⭐ YURI MODZ ⭐</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainPanel" class="container">
+        <div class="header">
+            <h1>🔐 FFH4X Admin Panel</h1>
+            <p>Gerenciamento de Usuários e Keys</p>
+        </div>
+
+        <div class="content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="totalUsers">0</h3>
+                    <p>Total de Keys</p>
+                </div>
+                <div class="stat-card blue">
+                    <h3 id="activeUsers">0</h3>
+                    <p>Keys Ativas</p>
+                </div>
+                <div class="stat-card green">
+                    <h3 id="todayUsers">0</h3>
+                    <p>Criadas Hoje</p>
+                </div>
+            </div>
+
+            <div id="message" class="message"></div>
+
+            <div class="api-section">
+                <h2>🌐 URL da API</h2>
+                <p style="margin-bottom: 10px; color: #666; font-size: 14px;">Use esta URL no seu APK para validar keys:</p>
+                <div class="api-url" id="apiUrl">Carregando URL...</div>
+                <button class="copy-btn" onclick="copyApiUrl()">📋 Copiar URL</button>
+            </div>
+
+            <div class="form-section">
+                <h2>➕ Criar Nova Key</h2>
+                <div>
+                    <div class="form-group">
+                        <label>Nome do Usuário</label>
+                        <input type="text" id="newUsername" placeholder="Digite o nome do usuário">
+                    </div>
+                    <div class="form-group">
+                        <label>Key (senha)</label>
+                        <input type="text" id="newPassword" placeholder="Digite a key">
+                    </div>
+                    <div class="form-group">
+                        <label>Dias de Validade</label>
+                        <select id="validityDays">
+                            <option value="1">1 dia</option>
+                            <option value="7">7 dias</option>
+                            <option value="15">15 dias</option>
+                            <option value="30" selected>30 dias</option>
+                            <option value="60">60 dias</option>
+                            <option value="90">90 dias</option>
+                            <option value="365">1 ano</option>
+                            <option value="9999">Vitalício</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select id="userStatus">
+                            <option value="active">Ativo</option>
+                            <option value="inactive">Inativo</option>
+                        </select>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="createButton">Criar Key</button>
+                        <button class="btn btn-secondary" id="clearButton">Limpar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-list">
+                <h2>🔑 Lista de Keys</h2>
+                <div id="usersList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CORRECT_KEY = 'YURI';
+        let users = JSON.parse(localStorage.getItem('ffh4x_users')) || [];
+
+        // Login
+        document.getElementById('loginButton').addEventListener('click', function() {
+            const key = document.getElementById('keyInput').value.trim();
+            if (key === CORRECT_KEY) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('mainPanel').style.display = 'block';
+                loadUsers();
+                updateApiUrl();
+            } else {
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        });
+
+        // Atualizar URL da API
+        function updateApiUrl() {
+            const currentUrl = window.location.href.split('?')[0];
+            const apiUrl = currentUrl + '?api=validate&key=';
+            document.getElementById('apiUrl').textContent = apiUrl + '[SUA_KEY_AQUI]';
+        }
+
+        // Copiar URL da API
+        function copyApiUrl() {
+            const apiUrl = document.getElementById('apiUrl').textContent.replace('[SUA_KEY_AQUI]', '');
+            navigator.clipboard.writeText(apiUrl).then(() => {
+                alert('✅ URL copiada!');
+            });
+        }
+
+        // Criar usuário
+        document.getElementById('createButton').addEventListener('click', function() {
+            const username = document.getElementById('newUsername').value.trim();
+            const password = document.getElementById('newPassword').value.trim();
+            const validityDays = parseInt(document.getElementById('validityDays').value);
+            const status = document.getElementById('userStatus').value;
+
+            if (!username || !password) {
+                showMessage('❌ Preencha todos os campos!', 'error');
+                return;
+            }
+
+            const expiryDate = new Date();
+            if (validityDays !== 9999) {
+                expiryDate.setDate(expiryDate.getDate() + validityDays);
+            } else {
+                expiryDate.setFullYear(expiryDate.getFullYear() + 100);
+            }
+
+            const newUser = {
+                id: Date.now(),
+                username: username,
+                key: password,
+                createdAt: new Date().toISOString(),
+                expiryDate: expiryDate.toISOString(),
+                status: status,
+                validityDays: validityDays
+            };
+
+            users.push(newUser);
+            saveUsers();
+            loadUsers();
+            clearForm();
+            showMessage('✅ Key criada com sucesso!', 'success');
+        });
+
+        // Limpar formulário
+        document.getElementById('clearButton').addEventListener('click', clearForm);
+
+        function clearForm() {
+            document.getElementById('newUsername').value = '';
+            document.getElementById('newPassword').value = '';
+            document.getElementById('validityDays').value = '30';
+            document.getElementById('userStatus').value = 'active';
+        }
+
+        // Deletar usuário
+        function deleteUser(id) {
+            if (confirm('❓ Tem certeza que deseja deletar esta key?')) {
+                users = users.filter(u => u.id !== id);
+                saveUsers();
+                loadUsers();
+                showMessage('✅ Key deletada!', 'success');
+            }
+        }
+
+        // Salvar usuários
+        function saveUsers() {
+            localStorage.setItem('ffh4x_users', JSON.stringify(users));
+        }
+
+        // Carregar usuários
+        function loadUsers() {
+            const usersList = document.getElementById('usersList');
+            usersList.innerHTML = '';
+
+            const today = new Date().toDateString();
+            let totalUsers = users.length;
+            let activeUsers = users.filter(u => u.status === 'active' && new Date(u.expiryDate) > new Date()).length;
+            let todayUsers = users.filter(u => new Date(u.createdAt).toDateString() === today).length;
+
+            document.getElementById('totalUsers').textContent = totalUsers;
+            document.getElementById('activeUsers').textContent = activeUsers;
+            document.getElementById('todayUsers').textContent = todayUsers;
+
+            if (users.length === 0) {
+                usersList.innerHTML = '<div style="padding: 40px; text-align: center; color: #999;">Nenhuma key cadastrada</div>';
+                return;
+            }
+
+            users.forEach(user => {
+                const isExpired = new Date(user.expiryDate) < new Date();
+                const statusClass = user.status === 'active' && !isExpired ? 'status-active' : 'status-inactive';
+                const statusText = user.status === 'active' && !isExpired ? 'Ativa' : 'Inativa';
+
+                const userItem = document.createElement('div');
+                userItem.className = 'user-item';
+                userItem.innerHTML = `
+                    <div class="user-info">
+                        <h3>${user.username}</h3>
+                        <p>Key: ${user.key}</p>
+                        <p>Validade: ${user.validityDays === 9999 ? 'Vitalício' : user.validityDays + ' dias'}</p>
+                        <p>Expira em: ${new Date(user.expiryDate).toLocaleDateString('pt-BR')}</p>
+                    </div>
+                    <div>
+                        <span class="user-status ${statusClass}">${statusText}</span>
+                        <button class="btn-delete" onclick="deleteUser(${user.id})">Deletar</button>
+                    </div>
+                `;
+                usersList.appendChild(userItem);
+            });
+        }
+
+        // Mostrar mensagem
+        function showMessage(text, type) {
+            const message = document.getElementById('message');
+            message.textContent = text;
+            message.className = 'message ' + type;
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 3000);
+        }
+
+        // API de validação
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('api') === 'validate') {
+                const key = urlParams.get('key');
+                const user = users.find(u => u.key === key && u.status === 'active');
+                
+                if (user && new Date(user.expiryDate) > new Date()) {
+                    document.body.innerHTML = JSON.stringify({
+                        success: true,
+                        message: 'Key válida',
+                        username: user.username,
+                        expiryDate: user.expiryDate
+                    });
+                } else {
+                    document.body.innerHTML = JSON.stringify({
+                        success: false,
+                        message: 'Key inválida ou expirada'
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
